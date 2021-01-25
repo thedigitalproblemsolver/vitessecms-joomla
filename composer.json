@@ -16,5 +16,8 @@
     "psr-4": {
       "VitesseCms\\Joomla\\": "src/"
     }
+  },
+  "require": {
+    "vitessecms/language": "~0.0.1"
   }
 }
