@@ -20,6 +20,7 @@
   "require": {
     "vitessecms/language": "~0.0.1",
     "vitessecms/sef": "~0.0.1",
-    "vitessecms/user": "~0.0.1"
+    "vitessecms/user": "~0.0.1",
+    "vitessecms/core": "~0.0.1"
   }
 }
