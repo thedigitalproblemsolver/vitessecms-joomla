@@ -30,16 +30,6 @@ class VirtuemartHelper
     protected static $productTaxRate;
 
     /**
-     * @param string $virtuemartId
-     */
-    public static function init(string $virtuemartId)
-    {
-        self::$productBase = VirtuemartProduct::findFirst("product_id = " . $virtuemartId);
-        self::$productPrice = VirtuemartProductPrice::findFirst("product_id = " . self::$productBase->_('product_id'));
-        self::$productTaxRate = VirtuemartTaxRate::findFirst('tax_rate_id = ' . self::$productBase->_('product_tax_id'));
-    }
-
-    /**
      * @param Item $item
      *
      * @return Item
@@ -60,6 +50,16 @@ class VirtuemartHelper
     }
 
     /**
+     * @param string $virtuemartId
+     */
+    public static function init(string $virtuemartId)
+    {
+        self::$productBase = VirtuemartProduct::findFirst("product_id = " . $virtuemartId);
+        self::$productPrice = VirtuemartProductPrice::findFirst("product_id = " . self::$productBase->_('product_id'));
+        self::$productTaxRate = VirtuemartTaxRate::findFirst('tax_rate_id = ' . self::$productBase->_('product_tax_id'));
+    }
+
+    /**
      * @param Item $item
      *
      * @return Item
@@ -67,7 +67,7 @@ class VirtuemartHelper
     public static function bindPrices(Item $item)
     {
         self::init($item->_('virtuemartId'));
-        $price_sale = round(self::$productPrice->_('product_price') * ( 1 + self::$productTaxRate->_('tax_rate') ),2);
+        $price_sale = round(self::$productPrice->_('product_price') * (1 + self::$productTaxRate->_('tax_rate')), 2);
 
         $item->set('price', self::$productPrice->_('product_price'));
         $item->set('price_purchase', self::$productBase->_('product_cost_price'));

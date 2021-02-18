@@ -35,7 +35,8 @@ class K2ImportHelper
         Item $item,
         string $slugPost = '',
         string $itemImageField = 'image'
-    ): Item {
+    ): Item
+    {
         $k2ImageHash = md5('Image' . $joomlaItem->_('id'));
         $url = 'https://craftbeershirts.nl/media/items/' . Di::getDefault()->get('config')->get('account') . '/src/';
         if (UrlUtil::exists($url . $k2ImageHash . '.png')) :
@@ -76,7 +77,8 @@ class K2ImportHelper
         Item $item,
         array $bindMap,
         string $baseLanguageShort = 'nl'
-    ): Item {
+    ): Item
+    {
         $category = K2Category::findFirst("id = " . $joomlaItem->_('catid'));
         $extrafields = K2ExtraFields::getFieldsOfGroup($category->_('extraFieldsGroup'));
         self::$extrafieldsArray = [];
@@ -124,7 +126,7 @@ class K2ImportHelper
                 else :
                     if (isset($map['datagroup'])) :
                         $value = self::getExtraFieldValue($extrafields[$map['from']]->name, $joomlaItem);
-                        if(empty($value)) :
+                        if (empty($value)) :
                             $item->set($map['to'], '');
                         else :
                             Item::setFindValue('datagroup', $map['datagroup']);

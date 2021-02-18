@@ -13,7 +13,8 @@ class VirtuemartProduct extends AbstractModel
     /**
      * initialize
      */
-    public function initialize() {
+    public function initialize()
+    {
         //$this->hasOne("product_id", "VirtuemartProductPrice", "product_id");
         /*$this->hasOne("product_id", "produktGerelateerd", "product_id");
         $this->hasOne("product_tax_id", "produktBelasting", "tax_rate_id");

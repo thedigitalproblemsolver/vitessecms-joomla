@@ -1,4 +1,5 @@
 <?php
+
 namespace VitesseCms\Joomla\Models;
 
 use VitesseCms\Core\AbstractModel;

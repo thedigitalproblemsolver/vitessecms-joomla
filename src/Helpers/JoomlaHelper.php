@@ -36,12 +36,12 @@ class JoomlaHelper
         Item::setFindValue('datagroup', $datagroup);
         $item = Item::findFirst();
 
-        if(!$item) :
+        if (!$item) :
             Item::setFindPublished(false);
             Item::setFindValue($fieldname, (int)$joomlaId);
             Item::setFindValue('datagroup', $datagroup);
             $item = Item::findFirst();
-            if(!$item) :
+            if (!$item) :
                 $item = ItemFactory::create($datagroup);
             endif;
         endif;
@@ -65,11 +65,11 @@ class JoomlaHelper
         User::setFindValue($fieldname, $joomlaId);
         $user = User::findFirst();
 
-        if(!$user) :
+        if (!$user) :
             User::setFindPublished(false);
             User::setFindValue($fieldname, (int)$joomlaId);
             $item = User::findFirst();
-            if(!$user) :
+            if (!$user) :
                 $user = UserFactory::create();
             endif;
         endif;
@@ -96,12 +96,12 @@ class JoomlaHelper
         $modelClass::setFindValue($fieldname, $joomlaId);
         $item = $modelClass::findFirst();
 
-        if(!$item) :
+        if (!$item) :
             $modelClass::setFindPublished(false);
             $modelClass::setFindValue($fieldname, (int)$joomlaId);
             $item = $modelClass::findFirst();
-            if(!$item) :
-                $factory = str_replace('Models','Factories',$modelClass) . 'Factory';
+            if (!$item) :
+                $factory = str_replace('Models', 'Factories', $modelClass) . 'Factory';
                 $item = $factory::create($bindData);
             endif;
         endif;
@@ -126,11 +126,11 @@ class JoomlaHelper
         array $bindMap,
         string $baseLanguageShort = 'nl',
         string $JoomlaIdField = 'id'
-    ) : AbstractCollection
+    ): AbstractCollection
     {
         foreach ($bindMap as $map) :
-            if($map['multilang']) :
-                $languageParsed = [$baseLanguageShort,'be'];
+            if ($map['multilang']) :
+                $languageParsed = [$baseLanguageShort, 'be'];
                 $item->set(
                     $map['to'],
                     $joomlaItem->_($map['from']),
@@ -145,9 +145,9 @@ class JoomlaHelper
                 );
                 Language::setFindPublished(false);
                 foreach (Language::findAll() as $language) :
-                    if(!in_array($language->_('short'), $languageParsed)) :
+                    if (!in_array($language->_('short'), $languageParsed)) :
                         $translatedItem = clone $joomlaItem;
-                        if(isset($map['emptyBeforeTranslate'])) :
+                        if (isset($map['emptyBeforeTranslate'])) :
                             $translatedItem->set(
                                 $map['from'],
                                 '',

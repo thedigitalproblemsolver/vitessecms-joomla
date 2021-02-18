@@ -32,18 +32,18 @@ class JoomsefHelper
                 switch ($match) :
                     case 'languageShort':
                         $seach[] = '{languageShort}';
-                        $replace[]= $language->_('short');
+                        $replace[] = $language->_('short');
                         break;
                     default:
-                        $seach[] = '{'.$match.'}';
-                        $replace[]= $joomlaObject->_($match);
+                        $seach[] = '{' . $match . '}';
+                        $replace[] = $joomlaObject->_($match);
                         break;
                 endswitch;
             endforeach;
 
             /** @var BaseObjectInterface $joomsefUrl */
-            $joomsefUrl = JoomsefUrls::findFirst("origurl LIKE '%".str_replace($seach, $replace, $urlPart)."%'");
-            if($joomsefUrl) :
+            $joomsefUrl = JoomsefUrls::findFirst("origurl LIKE '%" . str_replace($seach, $replace, $urlPart) . "%'");
+            if ($joomsefUrl) :
                 $redirect = RedirectFactory::create(
                     $joomsefUrl->_('sefurl'),
                     $item->_('slug', $language->_('short')),

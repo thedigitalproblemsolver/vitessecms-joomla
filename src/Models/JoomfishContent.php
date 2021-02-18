@@ -12,7 +12,7 @@ class JoomfishContent extends AbstractModel
     /**
      * @return string
      */
-    public function getSource() : string
+    public function getSource(): string
     {
         return 'jos_jf_content';
     }

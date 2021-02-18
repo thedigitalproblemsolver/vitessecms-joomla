@@ -19,20 +19,20 @@ class JoomfishHelper
      *
      * @return BaseObjectInterface
      */
-    public static function translateObject (
+    public static function translateObject(
         BaseObjectInterface $joomlaObject,
         string $table,
         int $languageId,
         string $languageShort,
         string $JoomlaIdField = 'id'
-    ) : BaseObjectInterface
+    ): BaseObjectInterface
     {
         $joomfishContents = JoomfishContent::find(
-            " reference_id = ".$joomlaObject->_($JoomlaIdField)." 
-            AND reference_table = '".$table."' 
-            AND language_id = ".$languageId
+            " reference_id = " . $joomlaObject->_($JoomlaIdField) . " 
+            AND reference_table = '" . $table . "' 
+            AND language_id = " . $languageId
         );
-        foreach($joomfishContents as $joomfishContent ) :
+        foreach ($joomfishContents as $joomfishContent) :
             $joomlaObject->set(
                 $joomfishContent->reference_field,
                 $joomfishContent->value,

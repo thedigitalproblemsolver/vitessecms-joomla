@@ -13,14 +13,6 @@ class K2ExtraFields extends AbstractModel
     static $groups = [];
 
     /**
-     * @return string
-     */
-    public function getSource(): string
-    {
-        return 'jos_k2_extra_fields';
-    }
-
-    /**
      * @param int $groupId
      *
      * @return array
@@ -41,5 +33,13 @@ class K2ExtraFields extends AbstractModel
 
             return self::$groups[$groupId];
         endif;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSource(): string
+    {
+        return 'jos_k2_extra_fields';
     }
 }
