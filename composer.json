@@ -2,7 +2,11 @@
   "name": "vitessecms/joomla",
   "type": "library",
   "description": "Joomla module for VitesseCms",
-  "keywords": ["php","phalcon","vitessecms"],
+  "keywords": [
+    "php",
+    "phalcon",
+    "vitessecms"
+  ],
   "homepage": "https://github.com/thedigitalproblemsolver/VitesseCMS",
   "license": "GPL-2.0-or-later",
   "version": "0.0.2",
@@ -21,6 +25,6 @@
     "vitessecms/language": "~0.2.4",
     "vitessecms/sef": "~0.2.2",
     "vitessecms/user": "~0.2.10",
-    "vitessecms/core": "~0.2.24"
+    "vitessecms/core": "~0.2.25"
   }
 }
