@@ -11,7 +11,7 @@ use VitesseCms\Craftbeershirts\Import\Helpers\JoomlaImportHelper;
 use VitesseCms\Joomla\Models\K2Category;
 use VitesseCms\Joomla\Models\K2ExtraFields;
 use VitesseCms\Sef\Factories\RedirectFactory;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Utils\Slug;
 
 /**
@@ -32,9 +32,9 @@ class K2ImportHelper
      */
     public static function bindImage(
         BaseObjectInterface $joomlaItem,
-        Item $item,
-        string $slugPost = '',
-        string $itemImageField = 'image'
+        Item                $item,
+        string              $slugPost = '',
+        string              $itemImageField = 'image'
     ): Item
     {
         $k2ImageHash = md5('Image' . $joomlaItem->_('id'));
@@ -74,9 +74,9 @@ class K2ImportHelper
      */
     public static function bindExtrafields(
         BaseObjectInterface $joomlaItem,
-        Item $item,
-        array $bindMap,
-        string $baseLanguageShort = 'nl'
+        Item                $item,
+        array               $bindMap,
+        string              $baseLanguageShort = 'nl'
     ): Item
     {
         $category = K2Category::findFirst("id = " . $joomlaItem->_('catid'));
