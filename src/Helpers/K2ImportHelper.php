@@ -12,7 +12,7 @@ use VitesseCms\Joomla\Models\K2Category;
 use VitesseCms\Joomla\Models\K2ExtraFields;
 use VitesseCms\Sef\Factories\RedirectFactory;
 use Phalcon\Di\Di;
-use Phalcon\Utils\Slug;
+use VitesseCms\Sef\Utils\SefUtil;
 
 /**
  * Class K2ImportHelper
@@ -42,7 +42,7 @@ class K2ImportHelper
         if (UrlUtil::exists($url . $k2ImageHash . '.png')) :
             $targetpath = Di::getDefault()->get('config')->get('uploadDir');
             if (DirectoryUtil::exists($targetpath, true)) :
-                $newFilename = Slug::generate($item->_('name') . $slugPost) . '.png';
+                $newFilename = SefUtil::generateSlugFromString($item->_('name') . $slugPost) . '.png';
                 file_put_contents(
                     $targetpath . $newFilename,
                     file_get_contents($url . $k2ImageHash . '.png')
