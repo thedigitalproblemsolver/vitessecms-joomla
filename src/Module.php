@@ -3,7 +3,7 @@
 namespace VitesseCms\Joomla;
 
 use VitesseCms\Core\AbstractModule;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 /**
  * Class Module
