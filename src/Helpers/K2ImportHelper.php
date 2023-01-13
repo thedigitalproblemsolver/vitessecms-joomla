@@ -11,8 +11,8 @@ use VitesseCms\Craftbeershirts\Import\Helpers\JoomlaImportHelper;
 use VitesseCms\Joomla\Models\K2Category;
 use VitesseCms\Joomla\Models\K2ExtraFields;
 use VitesseCms\Sef\Factories\RedirectFactory;
-use Phalcon\Di;
-use Phalcon\Utils\Slug;
+use Phalcon\Di\Di;
+use VitesseCms\Sef\Utils\SefUtil;
 
 /**
  * Class K2ImportHelper
@@ -32,9 +32,9 @@ class K2ImportHelper
      */
     public static function bindImage(
         BaseObjectInterface $joomlaItem,
-        Item $item,
-        string $slugPost = '',
-        string $itemImageField = 'image'
+        Item                $item,
+        string              $slugPost = '',
+        string              $itemImageField = 'image'
     ): Item
     {
         $k2ImageHash = md5('Image' . $joomlaItem->_('id'));
@@ -42,7 +42,7 @@ class K2ImportHelper
         if (UrlUtil::exists($url . $k2ImageHash . '.png')) :
             $targetpath = Di::getDefault()->get('config')->get('uploadDir');
             if (DirectoryUtil::exists($targetpath, true)) :
-                $newFilename = Slug::generate($item->_('name') . $slugPost) . '.png';
+                $newFilename = SefUtil::generateSlugFromString($item->_('name') . $slugPost) . '.png';
                 file_put_contents(
                     $targetpath . $newFilename,
                     file_get_contents($url . $k2ImageHash . '.png')
@@ -74,9 +74,9 @@ class K2ImportHelper
      */
     public static function bindExtrafields(
         BaseObjectInterface $joomlaItem,
-        Item $item,
-        array $bindMap,
-        string $baseLanguageShort = 'nl'
+        Item                $item,
+        array               $bindMap,
+        string              $baseLanguageShort = 'nl'
     ): Item
     {
         $category = K2Category::findFirst("id = " . $joomlaItem->_('catid'));

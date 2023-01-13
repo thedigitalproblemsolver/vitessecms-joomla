@@ -2,10 +2,14 @@
   "name": "vitessecms/joomla",
   "type": "library",
   "description": "Joomla module for VitesseCms",
-  "keywords": ["php","phalcon","vitessecms"],
+  "keywords": [
+    "php",
+    "phalcon",
+    "vitessecms"
+  ],
   "homepage": "https://github.com/thedigitalproblemsolver/VitesseCMS",
   "license": "GPL-2.0-or-later",
-  "version": "0.0.2",
+  "version": "0.3.0",
   "authors": [
     {
       "name": "Jasper Jaklofsky",
@@ -18,9 +22,9 @@
     }
   },
   "require": {
-    "vitessecms/language": "~0.0.1",
-    "vitessecms/sef": "~0.0.1",
-    "vitessecms/user": "~0.0.3",
-    "vitessecms/core": "~0.0.6"
+    "vitessecms/language": "~0.3.0",
+    "vitessecms/sef": "~0.3.0",
+    "vitessecms/user": "~0.3.0",
+    "vitessecms/core": "~0.3.0"
   }
 }

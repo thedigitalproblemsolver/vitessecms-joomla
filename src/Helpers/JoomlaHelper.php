@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace VitesseCms\Joomla\Helpers;
 
@@ -6,16 +6,11 @@ use VitesseCms\Content\Factories\ItemFactory;
 use VitesseCms\Content\Models\Item;
 use VitesseCms\Database\AbstractCollection;
 use VitesseCms\Core\Interfaces\BaseObjectInterface;
-use VitesseCms\Core\Interfaces\FactoryInterface;
 use VitesseCms\Language\Models\Language;
-use VitesseCms\Core\Utils\SystemUtil;
 use VitesseCms\Craftbeershirts\Import\Helpers\JoomlaImportHelper;
 use VitesseCms\User\Factories\UserFactory;
 use VitesseCms\User\Models\User;
 
-/**
- * Class JoomlaHelper
- */
 class JoomlaHelper
 {
     /**
