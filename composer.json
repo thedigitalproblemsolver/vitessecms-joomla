@@ -25,6 +25,6 @@
     "vitessecms/language": "~0.3.4",
     "vitessecms/sef": "~0.3.2",
     "vitessecms/user": "~0.4.1",
-    "vitessecms/core": "~0.4.7"
+    "vitessecms/core": "~0.4.8"
   }
 }
