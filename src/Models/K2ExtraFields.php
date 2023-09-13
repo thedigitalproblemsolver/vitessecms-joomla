@@ -10,7 +10,7 @@ use VitesseCms\Core\AbstractModel;
 class K2ExtraFields extends AbstractModel
 {
 
-    static $groups = [];
+    public static $groups = [];
 
     /**
      * @param int $groupId

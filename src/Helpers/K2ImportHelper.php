@@ -2,16 +2,16 @@
 
 namespace VitesseCms\Joomla\Helpers;
 
+use Phalcon\Di\Di;
 use VitesseCms\Content\Models\Item;
 use VitesseCms\Core\Interfaces\BaseObjectInterface;
-use VitesseCms\Language\Models\Language;
 use VitesseCms\Core\Utils\DirectoryUtil;
 use VitesseCms\Core\Utils\UrlUtil;
 use VitesseCms\Craftbeershirts\Import\Helpers\JoomlaImportHelper;
 use VitesseCms\Joomla\Models\K2Category;
 use VitesseCms\Joomla\Models\K2ExtraFields;
+use VitesseCms\Language\Models\Language;
 use VitesseCms\Sef\Factories\RedirectFactory;
-use Phalcon\Di\Di;
 use VitesseCms\Sef\Utils\SefUtil;
 
 /**
@@ -20,7 +20,7 @@ use VitesseCms\Sef\Utils\SefUtil;
 class K2ImportHelper
 {
 
-    static $extrafieldsArray = [];
+    public static $extrafieldsArray = [];
 
     /**
      * @param BaseObjectInterface $joomlaItem
@@ -32,11 +32,10 @@ class K2ImportHelper
      */
     public static function bindImage(
         BaseObjectInterface $joomlaItem,
-        Item                $item,
-        string              $slugPost = '',
-        string              $itemImageField = 'image'
-    ): Item
-    {
+        Item $item,
+        string $slugPost = '',
+        string $itemImageField = 'image'
+    ): Item {
         $k2ImageHash = md5('Image' . $joomlaItem->_('id'));
         $url = 'https://craftbeershirts.nl/media/items/' . Di::getDefault()->get('config')->get('account') . '/src/';
         if (UrlUtil::exists($url . $k2ImageHash . '.png')) :
@@ -74,11 +73,10 @@ class K2ImportHelper
      */
     public static function bindExtrafields(
         BaseObjectInterface $joomlaItem,
-        Item                $item,
-        array               $bindMap,
-        string              $baseLanguageShort = 'nl'
-    ): Item
-    {
+        Item $item,
+        array $bindMap,
+        string $baseLanguageShort = 'nl'
+    ): Item {
         $category = K2Category::findFirst("id = " . $joomlaItem->_('catid'));
         $extrafields = K2ExtraFields::getFieldsOfGroup($category->_('extraFieldsGroup'));
         self::$extrafieldsArray = [];
